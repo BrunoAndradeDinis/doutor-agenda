@@ -1,0 +1,15 @@
+{
+  "eslint,workingDirectories": [
+    {
+      "node": "auto"
+    }
+  ],
+  "aslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript typescriptreact"
+  ],
+  "editor.codeActionsOnSava": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
