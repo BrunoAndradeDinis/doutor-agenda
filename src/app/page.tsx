@@ -1,13 +1,10 @@
 import { Button } from "@/components/ui/button";
-
+import AuthenticationPage from "./authentication/page";
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
-
-      <section>
-        <Button>Bootcamp</Button>
-      </section>
+      <AuthenticationPage />
+      
     </div>
   );
 };
