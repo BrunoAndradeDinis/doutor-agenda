@@ -17,7 +17,7 @@ const Dashboard = async () => {
 
   // Preciso pegar as clinicas do usuario
   const clinics = await db.query.usersToClinicsTable.findMany({
-      where: eq(usersToClinicsTable.userId, session.user.id),
+    where: eq(usersToClinicsTable.userId, session.user.id),
   });
 
   if (clinics.length === 0) {
@@ -30,6 +30,8 @@ const Dashboard = async () => {
       <h3>{session?.user?.name}</h3>
       <h3>{session?.user?.email}</h3>
       <h3>{session?.user?.id}</h3>
+      <h3>{session?.user?.image}</h3>
+      <img src={session?.user?.image || ''} width={100} height={100} />
 
       <SignOutButton />
     </div>
