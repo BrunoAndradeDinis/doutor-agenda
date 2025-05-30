@@ -26,9 +26,9 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
-export const loginSchema = z.object({
-  email: z.string().trim().email(),
-  password: z.string().trim().min(8),
+const loginSchema = z.object({
+  email: z.string().trim().email().min(1, { message: "Email é obrigatório"}).email({message: "Email inválido"}),
+  password: z.string().trim().min(8, { message: "A senha deve conter pelo menos 8 caracteres" }),
 });
 
 const LoginForm = () => {
