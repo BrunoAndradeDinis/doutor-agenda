@@ -17,9 +17,10 @@ import {
 } from "@/components/ui/sidebar"
 import Image from "next/image"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
 import { authClient } from "@/lib/auth-client"
 import { redirect } from "next/navigation";
+import { Avatar } from "@/components/ui/avatar"
+import { AvatarFallback } from "@radix-ui/react-avatar"
 // Menu items.
 const items = [
   {
@@ -50,6 +51,8 @@ export function AppSidebar() {
     redirect("/authentication");
   }
 
+  const session = authClient.useSession();
+
   return (
     <Sidebar>
       <SidebarHeader className="p-4 border-b border-border">
@@ -79,13 +82,23 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button >
-                  Clinica
-                </Button>
+                <SidebarMenuButton size="lg">
+                    <Avatar>
+                      <AvatarFallback>
+                        {session.data?.user?.name?.charAt(0)}
+                      </AvatarFallback>
+                     
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium">{session.data?.user?.clinicId.name}</p>
+                      <p className="text-sm text-muted-foreground">{session.data?.user?.email}</p>
+                    </div>           
+                </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem onClick={ handleSignOut}>
                   <LogOut />
+                  <span>Sair</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
