@@ -4,7 +4,7 @@
       "node": "auto"
     }
   ],
-  "aslint.validate": [
+  "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript typescriptreact"
